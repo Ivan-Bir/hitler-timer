@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/hitler-timer/static/css/main.57115149.css",
+    "main.js": "/hitler-timer/static/js/main.a99818c7.js",
+    "index.html": "/hitler-timer/index.html",
+    "main.57115149.css.map": "/hitler-timer/static/css/main.57115149.css.map",
+    "main.a99818c7.js.map": "/hitler-timer/static/js/main.a99818c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57115149.css",
+    "static/js/main.a99818c7.js"
+  ]
+}
