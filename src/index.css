@@ -2,26 +2,59 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: #282c34;
   font-family: Arial, sans-serif;
   color: white;
 }
 
+
 .app {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.timer {
-  font-size: 6rem;
-  cursor: pointer;
+
+.timer-container {
+  font-size: 7rem;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+@media (min-height: 200px) and (max-height: 400px) {
+  .timer-container {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+}
+
+@media (min-height: 401px) and (max-height: 450px) {
+  .timer-container {
+    font-size: 6rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+}
+
+
+.timer-rotated {
+  transform: rotate(0.5turn);
 }
 
 .warning {
-  color: red;
+  color: rgb(173, 14, 14);
+}
+
+.buttons {
+  display: flex;
 }
 
 .buttons button {
@@ -31,16 +64,34 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: #61dafb;
   color: #282c34;
   transition: background-color 0.3s;
 }
+
+.btn-reset {
+  background-color: #8dbecc;
+}
+
+.btn-vote {
+  background-color: #61dafb;
+}
+
+.btn-pres {
+  background-color: #3f8ca1;;
+}
+
+.game-action-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 .buttons button:hover {
   background-color: #21a1f1;
 }
 
-/* Стили для кнопки настроек */
+
 .settings-button {
   position: absolute;
   top: 20px;
@@ -58,7 +109,6 @@ body {
   background-color: #21a1f1;
 }
 
-/* Стили для панели настроек */
 .settings-panel {
   position: absolute;
   top: 0;

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import beepSound from './sounds/beep.mp3';
-// import tickSound from './sounds/tick.mp3';
+import remindSound from './sounds/remind.mp3';
+import tickSound from './sounds/tick.mp3';
 
 const App = () => {
   const [timeLeft, setTimeLeft] = useState(0);
@@ -8,7 +8,6 @@ const App = () => {
   const [isWarning, setIsWarning] = useState(false);
   const [mode, setMode] = useState(null);
 
-  // Значения для режимов
   const [threeMinutesValue, setThreeMinutesValue] = useState(180);
   const [oneMinuteValue, setOneMinuteValue] = useState(60);
 
@@ -17,10 +16,9 @@ const App = () => {
   const [newOneMinute, setNewOneMinute] = useState('');
 
   const timerRef = useRef(null);
-  // const beepRef = useRef(new Audio(beepSound));
-  // const tickRef = useRef(new Audio(tickSound));
+  const remindRef = useRef(new Audio(remindSound));
+  const tickRef = useRef(new Audio(tickSound));
 
-  // Обновление таймера каждую секунду
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
@@ -32,13 +30,11 @@ const App = () => {
           }
 
           if ((prev - 1) % 30 === 0) {
-            // beepRef.current.play();
-            console.log('beepRef');
+            remindRef.current.play();
           }
 
           if (prev <= 10) {
-            // tickRef.current.play();
-            console.log('tickRef');
+            tickRef.current.play();
           }
 
           return prev - 1;
@@ -51,7 +47,6 @@ const App = () => {
     return () => clearInterval(timerRef.current);
   }, [isRunning]);
 
-  // Сброс таймера
   const resetTimer = () => {
     setTimeLeft(0);
     setIsRunning(false);
@@ -59,7 +54,6 @@ const App = () => {
     setMode(null);
   };
 
-  // Установка времени на 3 минуты
   const setThreeMinutes = () => {
     setTimeLeft(threeMinutesValue);
     setIsRunning(true);
@@ -67,7 +61,6 @@ const App = () => {
     setMode('threeMinutes');
   };
 
-  // Установка времени на 1 минуту
   const setOneMinute = () => {
     setTimeLeft(oneMinuteValue);
     setIsRunning(true);
@@ -75,12 +68,10 @@ const App = () => {
     setMode('oneMinute');
   };
 
-  // Пауза и возобновление таймера по клику
   const toggleTimer = () => {
     setIsRunning((prev) => !prev);
   };
 
-  // Изменение цвета цифр при определённом времени
   useEffect(() => {
     if ((mode === 'threeMinutes' && timeLeft <= 30 && timeLeft > 0) || (mode === 'oneMinute' && timeLeft <= 15 && timeLeft > 0)) {
       setIsWarning(true);
@@ -89,12 +80,10 @@ const App = () => {
     }
   }, [timeLeft, mode]);
 
-  // Открытие/закрытие настроек
   const toggleSettings = () => {
     setShowSettings((prev) => !prev);
   };
 
-  // Сохранение новых значений режимов
   const saveSettings = () => {
     if (newThreeMinutes) setThreeMinutesValue(parseInt(newThreeMinutes));
     if (newOneMinute) setOneMinuteValue(parseInt(newOneMinute));
@@ -142,14 +131,24 @@ const App = () => {
         </div>
       )}
 
-      <div className={`timer ${isWarning ? 'warning' : ''}`} onClick={toggleTimer}>
-        {formatTime()}
+      <div className="content-container">
+        <div className="timer-container" onClick={toggleTimer}>
+          <div className={`timer-rotated ${isWarning ? 'warning' : ''}`}>
+            {formatTime()}
+          </div>
+          <div className={`timer ${isWarning ? 'warning' : ''}`}>
+            {formatTime()}
+          </div>
+        </div>
+        <div className="buttons">
+          <button className="btn-reset" onClick={resetTimer}>Сброс</button>
+          <div className="game-action-buttons">
+            <button className="btn-vote" onClick={setThreeMinutes}>Голосование</button>
+            <button className="btn-pres" onClick={setOneMinute}>Действие Президента</button>
+          </div>
+        </div>
       </div>
-      <div className="buttons">
-        <button onClick={resetTimer}>Сброс</button>
-        <button onClick={setThreeMinutes}>Голосование</button>
-        <button onClick={setOneMinute}>Действие Президента</button>
-      </div>
+
     </div>
   );
 };
