@@ -44,7 +44,6 @@ body {
   }
 }
 
-
 .timer-rotated {
   transform: rotate(0.5turn);
 }
@@ -86,11 +85,9 @@ body {
 }
 
 
-
 .buttons button:hover {
   background-color: #21a1f1;
 }
-
 
 .settings-button {
   position: absolute;
@@ -122,6 +119,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  z-index: 100;
 }
 
 .input-group {
