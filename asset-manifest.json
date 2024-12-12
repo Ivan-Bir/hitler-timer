@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/hitler-timer/static/css/main.2fc81c22.css",
+    "main.css": "/hitler-timer/static/css/main.de1d86d6.css",
     "main.js": "/hitler-timer/static/js/main.551cb596.js",
     "static/media/remind.mp3": "/hitler-timer/static/media/remind.f995e53b4ad3c9859ddc.mp3",
     "static/media/tick.mp3": "/hitler-timer/static/media/tick.8ef4c678c4d9e53139bf.mp3",
     "index.html": "/hitler-timer/index.html",
-    "main.2fc81c22.css.map": "/hitler-timer/static/css/main.2fc81c22.css.map",
+    "main.de1d86d6.css.map": "/hitler-timer/static/css/main.de1d86d6.css.map",
     "main.551cb596.js.map": "/hitler-timer/static/js/main.551cb596.js.map"
   },
   "entrypoints": [
-    "static/css/main.2fc81c22.css",
+    "static/css/main.de1d86d6.css",
     "static/js/main.551cb596.js"
   ]
 }
